@@ -12,9 +12,11 @@ app:
 start_compose:
 	@docker-compose -f docker-compose-dev.yml up
 
+rebuild_compose:
+	@docker-compose -f docker-compose-dev.yml up --build
+
 test_env:
 	@cat ./docker/envs/env_example > ./docker/envs/.env-local
 
 test_user:
 	@docker exec -it -w /car_dealer car_dealer_api python src/manage.py createsuperuser
-
